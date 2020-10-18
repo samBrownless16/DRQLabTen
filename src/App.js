@@ -28,6 +28,7 @@ class App extends React.Component {
             <Route path='/read' component={Header}></Route>
             <Route path='/create' component={Footer}></Route>
           </Switch>
+          // Initially displayed all components on the one page
           {/* <Header></Header>
           <Content></Content>
           <Footer></Footer> */}
