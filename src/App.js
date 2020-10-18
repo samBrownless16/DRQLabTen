@@ -16,11 +16,13 @@ class App extends React.Component {
           <Navbar bg="primary" variant="dark">
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Nav className="mr-auto">
+              // Navigation Paths
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/create">Create</Nav.Link>
               <Nav.Link href="/read">Read</Nav.Link>
             </Nav>
           </Navbar>
+          // Path will navigate to the component's content
           <Switch>
             <Route path='/' component={Content} exact></Route>
             <Route path='/read' component={Header}></Route>
