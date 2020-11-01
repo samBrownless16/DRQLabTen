@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { MovieItem } from './movieItem';
 
-// Simple component which will display some text
+// Component which will display the Movie information
 export class Movies extends React.Component {
     render() {
         // Map function - splits collection into indivdual parts
