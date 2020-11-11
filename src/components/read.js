@@ -10,11 +10,11 @@ export class Read extends React.Component {
         movies: [ ]
     };
 
-    // function which retrieves data and sets movies collection using json link
+    // function which retrieves data and sets movies collection
     componentDidMount() {
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+        axios.get('http://localhost:4000/api/movies') // Now retrieves the data from our server
         .then(response => {
-            this.setState({movies:response.data.Search});
+            this.setState({movies:response.data.movies}); // sets movies collection with data retrieved
         })
         .catch((error)=> {
             console.log(error);

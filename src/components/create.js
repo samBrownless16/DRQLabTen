@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import axios from 'axios';
 
 export class Create extends React.Component {
     constructor() {
@@ -33,6 +34,22 @@ export class Create extends React.Component {
     }
     onSubmit(e){
         alert("Movie Added " + this.state.Title + " " + this.state.Year + " " + this.state.Poster);
+        
+        // Set object with the data user entered via the form
+        const newMovie = {
+            Title: this.state.Title,
+            Year: this.state.Year,
+            Poster: this.state.Poster
+        }
+
+        // Send newMovie object up to server
+        axios.post('http://localhost:4000/api/movies', newMovie)
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     }
 
     render() {
