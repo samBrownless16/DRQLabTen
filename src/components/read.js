@@ -14,7 +14,7 @@ export class Read extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:4000/api/movies') // Now retrieves the data from our server
         .then(response => {
-            this.setState({movies:response.data.movies}); // sets movies collection with data retrieved
+            this.setState({movies:response.data}); // sets movies collection with data retrieved
         })
         .catch((error)=> {
             console.log(error);
