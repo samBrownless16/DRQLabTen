@@ -83,12 +83,24 @@ app.get('/api/movies', (req, res) => {
     //     movies:mymovies});
 })
 
-// Function that will return a specific movie if the URL contains a mtaching movie id
+// Function that will return a specific movie if the URL contains a matching movie id
 app.get('/api/movies/:id', (req, res) => {
 	console.log(req.params.id);
 
 	movieModel.findById(req.params.id, (err, data) => {
 		res.json(data);
+	})
+})
+
+// Delete Movie data from the database using the unique id
+app.delete('/api/movies/:id', (req, res) => {
+	console.log('Delete ' + req.params.id);
+
+	movieModel.findByIdAndDelete({_id:req.params.id}, (err, data) => {
+		if (err)
+			res.send(err);
+		else
+			res.send(data);
 	})
 })
 
