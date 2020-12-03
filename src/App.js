@@ -6,6 +6,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Create } from './components/create';
 import { Read } from './components/read';
+import { Edit } from './components/edit';
 
 class App extends React.Component {
   render() {
@@ -26,6 +27,7 @@ class App extends React.Component {
             <Route path='/' component={Content} exact></Route>
             <Route path='/read' component={Read}></Route>
             <Route path='/create' component={Create}></Route>
+            <Route path='/edit/:id' component={Edit}></Route>
           </Switch>
           {/* Initially displayed all components on the one page
           /* <Header></Header>
