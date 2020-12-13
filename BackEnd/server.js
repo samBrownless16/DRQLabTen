@@ -4,6 +4,7 @@ const port = 4000
 const cors = require('cors'); // package for cross origin resource sharing (npm install cors)
 const bodyParser = require('body-parser') // Body Parser package
 const mongoose = require('mongoose'); // Mongoose Library
+const path = require('path'); // Path Library
 
 app.use(cors());
 app.use(function(req, res, next) {
@@ -12,6 +13,10 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+// Essentially configiration telling us where the front end content is located
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -132,6 +137,11 @@ app.post('/api/movies', (req, res) => {
 
 	res.send('Item Added'); // Confirmation Message
 })
+
+// * is for all other routes
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/../build/index.html'))
+});
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
